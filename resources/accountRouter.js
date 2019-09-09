@@ -19,7 +19,7 @@ router.post("/", async (req, res) => {
 
 router.get("/", async (req, res) => {
   try {
-    const accounts = await getAllAccount();
+    const accounts = await getAllAccount(req.query);
 
     res.json({ accounts });
   } catch (errors) {

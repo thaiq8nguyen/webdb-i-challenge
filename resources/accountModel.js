@@ -1,8 +1,11 @@
 const db = require("../data/dbConfig");
 
-const getAllAccount = () => {
+const getAllAccount = query => {
+  console.log(query);
   return db("accounts")
     .select()
+    .limit(query.limit ? query.limit : 100000)
+    .orderBy(query.sortby ? query.sortby : "id", query.sortdir)
     .then(accounts => accounts);
 };
 
